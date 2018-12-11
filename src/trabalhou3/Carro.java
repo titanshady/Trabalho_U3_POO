@@ -33,20 +33,33 @@ public class Carro extends Veiculo{
         System.out.println("Volume do Portamalas: " + this.volPortaMalas + "Lt");
         System.out.println("Quantidade de Portas: " + this.qtdePortas); 
     }
+
+    public void abrirPorta(){
+        System.out.println("\n.... Abrindo Portas ....");
+        System.out.println("===== Teste Completo =====\n");
+    }
+    
+    public void alinhaPneus(){
+        System.out.println(".... Alinhando Pneus ....");
+        System.out.println("===== Alinhamento Completo =====\n");
+    }
     
     public void testeCarro(){
         verInfo();
         System.out.println("\n===== Iniciado Teste do Modelo: " + this.modelo + " =====");
         if (ligaedesliga() != false) {
             acelera(60);
-            System.out.println("Marcha usada: " + pegaMarcha());
+            int numero = (int) Math.random();
+            if ((numero % 2) == 0) {
+                System.out.println("\n===== Veiculo Necessita de Calibragem =====");
+                abrirPorta();
+                alinhaPneus();
+            } else{
+                System.out.println("\n===== Veiculo em Perfeitas Condições =====");
+            }
             ligaedesliga();
         }
         System.out.println("===== Teste Finalizado =====\n\n");
     }
-    
-    //abrirPorta;
-    //alinhaPneus;
-    
 
 }

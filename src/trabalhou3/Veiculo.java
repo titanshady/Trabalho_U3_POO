@@ -21,7 +21,6 @@ public class Veiculo {
     boolean ligaedesliga;
     boolean ligada = false;
 
-    //liga o carro
     public Boolean ligaedesliga() {
         if (this.ligada == false){
             this.ligada = true;
@@ -32,26 +31,16 @@ public class Veiculo {
         }
         return this.ligada;
     }
-   //acelera uma certa quantidade
+
     public void acelera(int quantidade) {
         int velocidadeNova = this.velocidadeAtual + quantidade; 
         if (velocidadeNova < this.velocidadeMaxima){
             this.velocidadeAtual = velocidadeNova;
             System.out.println("Velocidade do Veículo: " + this.velocidadeAtual + "Km/h");
+        } else{
+            this.velocidadeAtual = velocidadeMaxima;
+            System.out.println("Velocidade do Veículo: " + this.velocidadeAtual + "Km/h");
         }
-    }
-   //devolve a marcha do carro
-    public Integer pegaMarcha() {
-        if (this.velocidadeAtual < 0) {
-            return -1;
-        }
-        if (this.velocidadeAtual >= 0 && this.velocidadeAtual < 40) {
-            return 1;
-        }
-        if (this.velocidadeAtual >= 40 && this.velocidadeAtual < 80) {
-            return 2;
-        }
-        return 3;
     }
     
 

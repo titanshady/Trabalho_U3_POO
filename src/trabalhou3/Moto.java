@@ -34,19 +34,32 @@ public class Moto extends Veiculo{
         System.out.println("Volume do Bagageiro: " + this.volBagageiro + "Lt"); 
     }
     
+    public void lubrificarCorrent(){
+        System.out.println("\n.... Lubrificando Corrente ....");
+        System.out.println("===== Lubrificação Completa =====\n");
+    }
+    
+    public void apertarBalanca(){
+        System.out.println(".... Apertando Balança ....");
+        System.out.println("===== Balança Apertada =====\n");
+    }
+    
     public void testeMoto(){
         verInfo();
         System.out.println("\n===== Iniciado Teste do Modelo: " + this.modelo + " =====");
         if (ligaedesliga() != false) {
-            acelera(60);
-            System.out.println("Marcha usada: " + pegaMarcha());
+            acelera(300);
+            int numero = (int) Math.random();
+            if ((numero % 2) == 0) {
+                System.out.println("\n===== Veiculo Necessita de Calibragem =====");
+                lubrificarCorrent();
+                apertarBalanca();
+            } else{
+                System.out.println("\n===== Veiculo em Perfeitas Condições =====");
+            }
             ligaedesliga();
         }
         System.out.println("===== Teste Finalizado =====\n\n");
     }
-    
-    //lubrificarCorrent;
-    //apertarBalanca;
-
     
 }
