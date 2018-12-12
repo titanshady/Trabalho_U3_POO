@@ -9,57 +9,61 @@ package trabalhou3;
  *
  * @author Rick
  */
-public class Moto extends Veiculo{
-    String corAssento;
-    int volBagageiro;
+public class Moto {
+    private String corAssento;
+    private int volBagageiro;
+    private Veiculo veiculo;
     
-    public Moto(String cor, String montadora, String modelo, int velocidadeMaxima, int cilindrada, String corAssento, int volBagageiro) {
-        velocidadeAtual = 0;
-        this.cor = cor;
-        this.montadora = montadora;
-        this.modelo = modelo;
-        this.velocidadeMaxima = velocidadeMaxima;
-        this.cilindrada = cilindrada;
+    public Moto(String corAssento, int volBagageiro, Veiculo veiculo) {
         this.corAssento = corAssento;
         this.volBagageiro = volBagageiro;
+        this.veiculo = veiculo;
+        
+        
     }
     
     public void verInfo(){
-        System.out.println("===== " + this.modelo + " =====");
-        System.out.println("Cor: " + this.cor);
-        System.out.println("Montadora: " + this.montadora);
-        System.out.println("Velocidade Maxima: " + this.velocidadeMaxima + "Km/h");
-        System.out.println("Cilindrada: " + this.cilindrada);
+        veiculo.verInfo();
         System.out.println("Cor do Assento: " + this.corAssento);
         System.out.println("Volume do Bagageiro: " + this.volBagageiro + "Lt"); 
     }
     
     public void lubrificarCorrent(){
         System.out.println("\n.... Lubrificando Corrente ....");
-        System.out.println("===== Lubrificação Completa =====\n");
     }
     
     public void apertarBalanca(){
-        System.out.println(".... Apertando Balança ....");
-        System.out.println("===== Balança Apertada =====\n");
+        System.out.println(".... Apertando Balança ....\n");
+    }
+    
+    public void acelera(int quantidade) {
+        int velocidadeNova = veiculo.getVelocidadeAtual() + quantidade; 
+        if (velocidadeNova < veiculo.getVelocidadeMaxima()){
+            veiculo.setVelocidadeAtual(velocidadeNova);
+            System.out.println("Velocidade da Moto: " + veiculo.getVelocidadeAtual() + "Km/h");
+        } else{
+            veiculo.setVelocidadeAtual(veiculo.getVelocidadeMaxima());
+            System.out.println("Velocidade da Moto: " + veiculo.getVelocidadeAtual() + "Km/h");
+        }
     }
     
     public void testeMoto(){
         verInfo();
-        System.out.println("\n===== Iniciado Teste do Modelo: " + this.modelo + " =====");
-        if (ligaedesliga() != false) {
-            acelera(300);
-            int numero = (int) Math.random();
-            if ((numero % 2) == 0) {
-                System.out.println("\n===== Veiculo Necessita de Calibragem =====");
+        System.out.println("\n===== Iniciado Teste do Modelo: " + veiculo.getModelo() + " =====");
+        if (veiculo.ligar() != false) {
+            int numero = (int) (Math.random()*100);            
+            acelera(numero);
+            if (numero % 2 == 0) {
+                System.out.println("\n===== Moto Necessita de Calibragem =====");
                 lubrificarCorrent();
                 apertarBalanca();
             } else{
-                System.out.println("\n===== Veiculo em Perfeitas Condições =====");
+                System.out.println("\n===== Moto em Perfeitas Condições =====");
             }
-            ligaedesliga();
+            veiculo.desligar();
         }
         System.out.println("===== Teste Finalizado =====\n\n");
     }
+
     
 }

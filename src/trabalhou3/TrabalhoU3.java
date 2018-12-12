@@ -15,10 +15,12 @@ public class TrabalhoU3 {
      * @param args the command line arguments
      */
     public static void main(String[] args){
-        Carro mustang = new Carro("Preto", "Ford","Mustang", 250, 600, 200, 2);
+        Veiculo veicmustang = new Veiculo("Ford","Mustang", 250, 600);
+        Carro mustang = new Carro(200, 2, veicmustang);
         mustang.testeCarro();
         
-        Moto gsx = new Moto("Preto", "Suzuki","GSX-R1000A", 250, 999, "Preto", 60);
+        Veiculo veicgsx = new Veiculo("Suzuki","GSX-R1000A", 250, 999);
+        Moto gsx = new Moto("Preto", 60, veicgsx);
         gsx.testeMoto();
  }
     
